@@ -2,13 +2,13 @@
 
 class action
 {
-	public function writeVhosts($myFileVhost, $urlsource, $weburl){
+	public function writeVhosts($myFileVhost, $urlsource, $linkpj, $weburl){
 		$fh = fopen($myFileVhost, 'a');
 	    $host = "
 		    	\n\n<VirtualHost *:80>
 		    	\nDocumentRoot ".$urlsource."
 		    	\nServerName ".$weburl."
-		    	\n<Directory ".$urlsource.">
+		    	\n<Directory ".$linkpj.">
 		    	\nOrder allow,deny
 		    	\nAllow from all
 		    	\n</Directory>

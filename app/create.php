@@ -13,7 +13,7 @@
 
 	$action = new action();
 	$action->writeHosts($myFileHost, $weburl);
-	$action->writeVhosts($myFileVhost, $urlsource, $weburl);
+	$action->writeVhosts($myFileVhost, $urlsource, $linkpr, $weburl);
 
 	$action->makeDir($urlsource);
 
