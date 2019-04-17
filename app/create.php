@@ -34,6 +34,7 @@
 	}
 	recurse_copy($linkpr,$urlsource);
 
+<<<<<<< HEAD
 	$link_address = "http://".$weburl;
 	echo "Create VirtualHost Successfully".'<br>'.'URL: '.$weburl."<br>"."You must restart apache xampps to start virtualhost"."<br>";
 	echo "<a href='".$link_address."'>".$weburl."</a>";
@@ -87,3 +88,7 @@
 	// 	}
 	// 	closedir($dir);
 	// }
+=======
+	$link_address = "http://".$weburl;	
+	$action->makeDir($link_address, $weburl);
+>>>>>>> update

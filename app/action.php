@@ -31,6 +31,7 @@ class action
 	     return $ret === true || is_dir($path);
 	}
 
+<<<<<<< HEAD
 	// public function recurse_copy($src,$dst) {
 	// 	$dir = opendir($src);
 	// 	@mkdir($dst);
@@ -46,4 +47,11 @@ class action
 	// 	}
 	// 	closedir($dir);
 	// }
+=======
+	public function success($link_address, $weburl)
+	{
+		echo "Create VirtualHost Successfully".'<br>'.'URL: '.$weburl."<br>"."You must restart apache xampps to start virtualhost"."<br>";
+		echo "<a href='".$link_address."'>".$weburl."</a>";
+	}
+>>>>>>> update
 }
