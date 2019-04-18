@@ -1,10 +1,10 @@
 <?php 
 class checkFile
 {
-	public function checkvhost($weburl, $linkpj){
+	public function checkvhost($weburl, $linkpj, $drive){
 		$host = "
 		    	\n<VirtualHost *:80>
-		    	\nDocumentRoot "."C:\\xampp\\htdocs\\".$weburl."
+		    	\nDocumentRoot ".$drive.":\\xampp\\htdocs\\".$weburl."
 		    	\nServerName ".$weburl."
 		    	\nErrorLog logs\\dummy-host.example.com-error.log
 		    	\nCustomLog logs\\dummy-host.example.com-access.log common
