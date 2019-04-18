@@ -2,19 +2,25 @@
 
 class action
 {
-	public function writeVhosts($myFileVhost, $urlsource, $linkpj, $weburl){
+	// public function writeVhosts($myFileVhost, $urlsource, $linkpj, $weburl){
+	// 	$fh = fopen($myFileVhost, 'a');
+	//     $host = "
+	// 	    	\n\n<VirtualHost *:80>
+	// 	    	\nDocumentRoot ".$urlsource."
+	// 	    	\nServerName ".$weburl."
+	// 	    	\n<Directory ".$linkpj.">
+	// 	    	\nOrder allow,deny
+	// 	    	\nAllow from all
+	// 	    	\n</Directory>
+	// 	    	\n</VirtualHost>
+	// 		";
+	// 	fwrite($fh, $host);
+	// 	fclose($fh);
+	// }
+
+	public function writeVhosts($myFileVhost, $vhost){
 		$fh = fopen($myFileVhost, 'a');
-	    $host = "
-		    	\n\n<VirtualHost *:80>
-		    	\nDocumentRoot ".$urlsource."
-		    	\nServerName ".$weburl."
-		    	\n<Directory ".$linkpj.">
-		    	\nOrder allow,deny
-		    	\nAllow from all
-		    	\n</Directory>
-		    	\n</VirtualHost>
-			";
-		fwrite($fh, $host);
+		fwrite($fh, $vhost);
 		fclose($fh);
 	}
 

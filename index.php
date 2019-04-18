@@ -105,8 +105,8 @@
 						</div>
 
 						<div class="form-group">
-						    <label for="hosts">Path hosts</label>
-						    <textarea value="add" class="form-control" name="vhost" id="hosts" rows="2"><?php if ($checkPath){ echo $checkPath; } ?></textarea>
+						    <label for="path">Path hosts</label>
+						    <textarea value="add" class="form-control" name="path" id="path" rows="2"><?php if ($checkPath){ echo $checkPath; } ?></textarea>
 						</div>
 					  <button formaction="./app/create.php" name="submit" type="submit" class="btn btn-primary">Create</button>
 					  <button formaction="index.php" name="check" type="submit" class="btn btn-success">Check</button>

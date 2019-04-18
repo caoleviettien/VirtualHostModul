@@ -1,19 +1,22 @@
 <?php 
 	include "action.php";
 
-	$start = "C:/xampp/apache_start.bat";	
-	$stop = "C:/xampp/apache_stop.bat";
-	$restart = "C:/xampp/apache_restart.bat";
+	// $start = "C:/xampp/apache_start.bat";	
+	// $stop = "C:/xampp/apache_stop.bat";
+	// $restart = "C:/xampp/apache_restart.bat";
+
 	$weburl = $_POST['url'];
 	$linkpr = $_POST['linkpj'];
+	$drive = $_POST['drive'];
+	$vhost = $_POST['vhost'];
 
-	$urlsource =  "C:\\xampp\\htdocs\\".$weburl;
-	$myFileHost = "C:/Windows/System32/drivers/etc/hosts";
-	$myFileVhost = "C:/xampp/apache/conf/extra/httpd-vhosts.conf";
+	$urlsource =  $drive.":\\xampp\\htdocs\\".$weburl;
+	$myFileHost = $drive.":/Windows/System32/drivers/etc/hosts";
+	$myFileVhost = $drive.":/xampp/apache/conf/extra/httpd-vhosts.conf";
 
 	$action = new action();
 	$action->writeHosts($myFileHost, $weburl);
-	$action->writeVhosts($myFileVhost, $urlsource, $linkpr, $weburl);
+	$action->writeVhosts($myFileVhost, $vhost);
 
 	$action->makeDir($urlsource);
 
