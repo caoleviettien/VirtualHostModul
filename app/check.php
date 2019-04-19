@@ -1,10 +1,10 @@
 <?php 
 class checkFile
 {
-	public function checkvhost($weburl, $linkpj, $drive){
+	public function checkvhost($weburl, $linkpj, $svaddress){
 		$host = "
 		    	\n<VirtualHost *:80>
-		    	\nDocumentRoot ".$drive.":\\xampp\\htdocs\\".$weburl."
+		    	\nDocumentRoot ".$svaddress.$weburl."
 		    	\nServerName ".$weburl."
 		    	\nErrorLog logs\\dummy-host.example.com-error.log
 		    	\nCustomLog logs\\dummy-host.example.com-access.log common
@@ -20,5 +20,13 @@ class checkFile
 	public function checkPath($weburl){
 		$path = "\n127.0.0.10 ".$weburl;
 		return $path;
+	}
+
+	public function checkSvAddress($drive, $server){	
+	if ($server == "xampp") {
+			return $drive.":\\".$server."\\htdocs\\";
+		} else {
+			return $drive.":\\".$server."\\www\\";
+		}		
 	}
 }

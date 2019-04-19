@@ -1,16 +1,12 @@
 <?php 
 	include "action.php";
 
-	// $start = "C:/xampp/apache_start.bat";	
-	// $stop = "C:/xampp/apache_stop.bat";
-	// $restart = "C:/xampp/apache_restart.bat";
-
 	$weburl = $_POST['url'];
 	$linkpr = $_POST['linkpj'];
-	$drive = $_POST['drive'];
 	$vhost = $_POST['vhost'];
+	$svaddress = $_POST['svaddress'];
 
-	$urlsource =  $drive.":\\xampp\\htdocs\\".$weburl;
+	$urlsource =  $svaddress.$weburl;
 	$myFileHost = $drive.":/Windows/System32/drivers/etc/hosts";
 	$myFileVhost = $drive.":/xampp/apache/conf/extra/httpd-vhosts.conf";
 
