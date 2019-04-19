@@ -11,9 +11,6 @@
 	 $checkSvAddress = null;
 	 $serverold = null;
 
-	if (isset($_POST['url']) & isset($_POST['linkpj']) & isset($_POST['drive'])) {
-	    $checkVhost = $check->checkvhost($_POST['url'], $_POST['linkpj'], $_POST['drive']);
-	}
 
 	if (isset($_POST['url'])) {
 	    $checkPath = $check->checkPath($_POST['url']);
@@ -21,6 +18,10 @@
 
 	if (isset($_POST['drive']) & isset($_POST['server'])) {
 	    $checkSvAddress = $check->checkSvAddress($_POST['drive'], $_POST['server']);
+	}
+
+	if (isset($_POST['url']) & isset($_POST['linkpj']) & isset($_POST['svaddress'])) {
+	    $checkVhost = $check->checkvhost($_POST['url'], $_POST['linkpj'], $_POST['svaddress']);
 	}
 
 	if ($_POST) {
@@ -85,13 +86,13 @@
 					<h2 class="text-center">CREATE VIRTUALHOST</h2>
 					  <div class="form-group">
 					    <label for="url">Input URL:</label>
-					    <input value="<?php if ($urlold){ echo $urlold; } ?>" type="text" class="form-control" name="url" id="url" placeholder="Enter URL VirtualHost...">
+					    <input onkeyup="showVhost();" value="<?php if ($urlold){ echo $urlold; } ?>" type="text" class="form-control" name="url" id="url" placeholder="Enter URL VirtualHost...">
 					    <small class="form-text text-muted">This is URL project you can run by VirtualHost</small>
 					  </div>
 
 					  <div class="form-group">
 					    <label for="linkpj">Project Address</label>
-					    <input value="<?php if ($linkold){ echo $linkold; } ?>" type="text" class="form-control" name="linkpj" id="linkpj" placeholder="Enter Your Project Address...">
+					    <input onkeyup="showVhost();" value="<?php if ($linkold){ echo $linkold; } ?>" type="text" class="form-control" name="linkpj" id="linkpj" placeholder="Enter Your Project Address...">
 					    <small class="form-text text-muted">This is Your Project Address</small>
 					  </div>
 
@@ -125,14 +126,14 @@
 
 					  <div class="form-group">
 					    <label for="$svaddress">Virtual server installation adddress:</label>
-					    <input value="<?php if ($checkSvAddress){ echo $checkSvAddress; } ?>" type="text" class="form-control" name="$svaddress" id="$svaddress" placeholder="Virtual server installation Address...">
+					    <input onchange="showVhost();" value="<?php if ($checkSvAddress){ echo $checkSvAddress; } ?>" type="text" class="form-control" name="svaddress" id="svaddress" placeholder="Virtual server installation Address...">
 					    <small class="form-text text-muted">This is URL Virtual server installation Address</small>
 					  </div>
 
 					  	<div class="form-group">
 						    <label for="vhost">File httpd-vhost.conf:</label>
 						    <textarea class="form-control" name="vhost" id="vhost" rows="10">
-						    	<?php if ($checkVhost){ echo $checkVhost; } ?>						     		
+					     		
 						    </textarea>
 						</div>
 
@@ -141,7 +142,7 @@
 						    <textarea value="add" class="form-control" name="path" id="path" rows="2"><?php if ($checkPath){ echo $checkPath; } ?></textarea>
 						</div>
 					  <button formaction="./app/create.php" name="submit" id="btn-create" type="submit" class="btn btn-primary">Create</button>
-					  <button formaction="index.php" name="check" type="submit" class="btn btn-success">Check</button>
+					  <!-- <button formaction="index.php" name="check" type="submit" class="btn btn-success">Check</button> -->
 				</form>
 			</div>
 		</div>		
@@ -173,7 +174,38 @@
 
 		function hiddenCreate()
 		{
-			$("#btn-create").css('display','none');			
+			//$("#btn-create").css('display','none');	
+			var drive = document.getElementById("drive").value;
+			var server = document.getElementById("server").value;
+			var db = null;
+			if (server == "xampp") {
+					db = drive + ":\\"+server+"\\htdocs\\";
+				} else {
+					db =  drive +":\\"+server+"\\www\\";
+				}		
+			
+			document.getElementById("svaddress").value = db;		
+			showVhost();
+		}
+
+	
+		function showVhost(){
+			//var url = document.getElementById("url").value;
+			var linkpj = document.getElementById("linkpj").value;
+			var svaddress = document.getElementById("svaddress").value;
+			var weburl = document.getElementById("url").value;
+			var linkpj = document.getElementById("linkpj").value;
+			var host = "\n<VirtualHost *:80>" +
+		    	"\nDocumentRoot " + svaddress + weburl +
+		    	"\nServerName "+ weburl +
+		    	"\nErrorLog logs\\dummy-host.example.com-error.log"+
+		    	"\nCustomLog logs\\dummy-host.example.com-access.log common"+
+		    	"\n<Directory " + linkpj +">"+
+		    	"\nOrder allow,deny" +
+		    	"\nAllow from all" +
+		    	"\n</Directory>" +
+		    	"\n</VirtualHost>";
+			document.getElementById("vhost").value = host;
 		}
 	</script>	
 	<script src="./public/js/jquery-2.1.4.min.js" type="text/javascript"></script>

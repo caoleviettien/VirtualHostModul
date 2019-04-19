@@ -5,10 +5,12 @@
 	$linkpr = $_POST['linkpj'];
 	$vhost = $_POST['vhost'];
 	$svaddress = $_POST['svaddress'];
+	$drive = $_POST['drive'];
+	$server = $_POST['server'];
 
 	$urlsource =  $svaddress.$weburl;
 	$myFileHost = $drive.":/Windows/System32/drivers/etc/hosts";
-	$myFileVhost = $drive.":/xampp/apache/conf/extra/httpd-vhosts.conf";
+	$myFileVhost = $drive.":/".$server."/apache/conf/extra/httpd-vhosts.conf";
 
 	$action = new action();
 	$action->writeHosts($myFileHost, $weburl);
