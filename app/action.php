@@ -2,7 +2,6 @@
 
 class action
 {
-
 	public function writeVhosts($myFileVhost, $vhost){
 		$fh = fopen($myFileVhost, 'a');
 		fwrite($fh, $vhost);

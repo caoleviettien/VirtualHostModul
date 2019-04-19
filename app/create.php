@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 	include "action.php";
 
 	$weburl = $_POST['url'];
@@ -7,6 +8,8 @@
 	$svaddress = $_POST['svaddress'];
 	$drive = $_POST['drive'];
 	$server = $_POST['server'];
+
+	$_SESSION['url'] = $weburl;
 
 	$urlsource =  $svaddress.$weburl;
 	$myFileHost = $drive.":/Windows/System32/drivers/etc/hosts";
@@ -34,6 +37,6 @@
 		closedir($dir);
 	}
 	recurse_copy($linkpr,$urlsource);
-
 	$link_address = "http://".$weburl;	
-	$action->success($link_address, $weburl);
+	$_SESSION['link'] = $link_address;
+	header("Location: ../success.php");
