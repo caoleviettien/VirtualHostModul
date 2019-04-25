@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 class action
 {
 	public function writeVhosts($myFileVhost, $vhost){
@@ -19,11 +18,5 @@ class action
 	{
 	     $ret = mkdir($path);
 	     return $ret === true || is_dir($path);
-	}
-
-	public function success($link_address, $weburl)
-	{
-		echo "Create VirtualHost Successfully".'<br>'.'URL: '.$weburl."<br>"."You must restart apache xampps to start virtualhost"."<br>";
-		echo "<a href='".$link_address."'>".$weburl."</a>";
 	}
 }

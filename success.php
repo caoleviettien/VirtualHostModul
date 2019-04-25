@@ -3,6 +3,7 @@
 	$url = $_SESSION['url'];
 	$link = $_SESSION['link'];
  ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
 				<h2>Create VirtualHost Successfully</h2>
 				<h3>You must restart apache xampps to start virtualhost</h3>
 				<div>
-					<button class="btn btn-success"><a style="color: #fff !important;" href="<?php echo $link ?>"><?php echo $url ?></a> <i class="fa fa-chevron-right"></i></button>	
+					<button class="btn btn-success"><a style="color: #fff !important;" href="<?php echo $link ?>"><?php echo $url ?></a><i class="fa fa-chevron-right"></i></button>	
 				</div>
 				<br>
 				<div>

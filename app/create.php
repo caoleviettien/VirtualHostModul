@@ -18,8 +18,8 @@
 	$action = new action();
 	$action->writeHosts($myFileHost, $weburl);
 	$action->writeVhosts($myFileVhost, $vhost);
-
 	$action->makeDir($urlsource);
+
 
 	function recurse_copy($src,$dst) {
 		$dir = opendir($src);

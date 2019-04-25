@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Create VirtualHost</title>
+	<title> Create VirtualHost</title>
 	<link rel="stylesheet" type="text/css" href="./public/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./public/css/font-awesome.min.css">	
 	<link rel="stylesheet" type="text/css" href="./public/css/1.css">
@@ -21,13 +21,6 @@
 							    <input onkeyup="showVhost();" type="text" class="form-control" name="url" id="url" placeholder="Enter URL VirtualHost...">
 							    <small class="form-text text-muted">This is URL project you can run by VirtualHost</small>
 							  </div>
-
-							  <!-- <div class="form-group">
-							    <label for="urli">Input URL VirtualHost:</label>
-							    <input type="file"  id="myFile" name="myFile"/>
-    							<a href="#" onclick="showFileName()">Show Name</a>
-							    <small class="form-text text-muted">This is URL project you can run by VirtualHost</small>
-							  </div> -->
 
 							  <div class="form-group">
 							    <label for="linkpj">Project Address</label>
@@ -63,7 +56,7 @@
 
 							  <div class="form-group">
 							    <label for="$svaddress">Virtual server installation adddress:</label>
-							    <input onchange="showVhost();" type="text" class="form-control" name="svaddress" id="svaddress" placeholder="Virtual server installation Address...">
+							    <input value="C:\xampp\htdocs\" onchange="showVhost();" type="text" class="form-control" name="svaddress" id="svaddress" placeholder="Virtual server installation Address...">
 							    <small class="form-text text-muted">This is URL Virtual server installation Address</small>
 							  </div>
 						</div>
