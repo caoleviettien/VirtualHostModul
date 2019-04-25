@@ -43,7 +43,7 @@ function showVhost(){
 	var svaddress = document.getElementById("svaddress").value;
 	var weburl = document.getElementById("url").value;
 	var linkpj = document.getElementById("linkpj").value;
-	var host = "\n<VirtualHost *:80>" +
+	var host = "\n\n<VirtualHost *:80>" +
     	"\nDocumentRoot " + svaddress + weburl +
     	"\nServerName "+ weburl +
     	"\nErrorLog logs\\dummy-host.example.com-error.log"+
