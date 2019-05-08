@@ -43,21 +43,43 @@ function showVhost(){
 	var svaddress = document.getElementById("svaddress").value;
 	var weburl = document.getElementById("url").value;
 	var linkpj = document.getElementById("linkpj").value;
-	var host = "\n\n<VirtualHost *:80>" +
-    	"\nDocumentRoot " + svaddress + weburl +
-    	"\nServerName "+ weburl +
-    	"\nErrorLog logs\\dummy-host.example.com-error.log"+
-    	"\nCustomLog logs\\dummy-host.example.com-access.log common"+
-    	"\n<Directory " + linkpj +">"+
-    	"\nOrder allow,deny" +
-    	"\nAllow from all" +
-    	"\n</Directory>" +
-    	"\n</VirtualHost>";
+	var id = document.getElementById("countid").value;
+
+	var times = new Date();
+	var host = 
+		"\n##Porject:\thttp://"+weburl+"   #####################" +
+		"\n##ID\t: " + id +
+		"\n##Date\t: " + times.getDate() + "/" + times.getMonth() + "/" + times.getFullYear() +
+		"\n<VirtualHost *:80>" +
+    	"\n\tDocumentRoot " + svaddress + weburl +
+    	"\n\tServerName "+ weburl +
+    	"\n\tErrorLog logs\\dummy-host.example.com-error.log"+
+    	"\n\tCustomLog logs\\dummy-host.example.com-access.log common"+
+    	"\n\t<Directory " + svaddress + weburl +">"+
+    	"\n\t\tAllowOverride All" +
+    	"\n\t\tRequire local" +
+    	"\n\t</Directory>" +
+    	"\n</VirtualHost>" +
+    	"\n##########################################################";
 	document.getElementById("vhost").value = host;
 	document.getElementById("path").value = "\n127.0.0.10 " + weburl;
 }
 
-// function showFileName() {
-//    var fil = document.getElementById("myFile");
-//    alert(fil.value);
-// }
+
+function checkIf(){
+	var url = document.getElementById("url").value;
+	var cpath = document.getElementById("cpath").value;
+	
+	var dot = ".";
+
+	if(url.indexOf(dot) == -1){
+    	confirm("Đường dẫn phải chứa dấm chấm");
+    	$("#url").focus();
+	}
+
+	if(cpath.indexOf(url) != -1){
+    	confirm("Tên miền đã tồn tại!");
+    	$("#url").val('');
+    	$("#url").focus();
+	}
+}

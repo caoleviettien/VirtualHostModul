@@ -19,4 +19,25 @@ class action
 	     $ret = mkdir($path);
 	     return $ret === true || is_dir($path);
 	}
+
+	public function checkid(){
+		$urldata = file_get_contents("C:/xampp/apache/conf/extra/httpd-vhosts.conf");
+		$data = "Porject:";
+		$count = substr_count($urldata, $data);
+		$id = $count+1;
+		return $id;
+	}
+
+	public function checkpath(){
+		$urldata = file_get_contents("C:/xampp/apache/conf/extra/httpd-vhosts.conf");
+		return $urldata;
+	}
+
+	public function checkfileexist($linkpj){
+		if (file_exists($linkpj)) {
+            return true;
+        }else {
+            return false;
+        }
+	}
 }

@@ -1,3 +1,15 @@
+<?php 
+	session_start();
+	include "app/action.php";
+	$action = new action();
+	if (isset($_SESSION['fail'])) {
+		$fail = $_SESSION['fail'];
+		echo "<script type='text/javascript'>alert('$fail');</script>";
+		session_destroy();
+	}
+	unset($_SESSION['fail']);
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,13 +30,13 @@
 						<div class="col-xs-6">							
 							  <div class="form-group">
 							    <label for="url">Input URL VirtualHost:</label>
-							    <input onkeyup="showVhost();" type="text" class="form-control" name="url" id="url" placeholder="Enter URL VirtualHost...">
+							    <input onchange="checkIf();" onkeyup="showVhost();" type="text" class="form-control" name="url" id="url" placeholder="Enter URL VirtualHost...">
 							    <small class="form-text text-muted">This is URL project you can run by VirtualHost</small>
 							  </div>
 
 							  <div class="form-group">
 							    <label for="linkpj">Project Address</label>
-							    <input onkeyup="showVhost();" type="text" class="form-control" name="linkpj" id="linkpj" placeholder="Enter Your Project Address...">
+							    <input onchange="checkpath();" onkeyup="showVhost();" type="text" class="form-control" name="linkpj" id="linkpj" placeholder="Enter Your Project Address...">
 							    <small class="form-text text-muted">This is Your Project Address</small>
 							  </div>
 
@@ -64,14 +76,16 @@
 						<div class="col-xs-6">
 							<div class="form-group">
 							    <label for="vhost">File httpd-vhost.conf:</label>
-							    <textarea class="form-control" name="vhost" id="vhost" rows="10">
-						     		
-							    </textarea>
+							    <textarea class="form-control" name="vhost" id="vhost" rows="10"></textarea>
+							 
+							    <input style="display: none;" value="<?php echo $action->checkid() ?>" type="text" id="countid" name="countid" class="form-control">
+							    <textarea style="display: none;" class="form-control" name="cpath" id="cpath" rows="10"><?php echo $action->checkpath() ?></textarea>
 							</div>
 							<div class="form-group">
 							    <label for="path">Path hosts</label>
 							    <textarea value="add" class="form-control" name="path" id="path" rows="2"></textarea>
 							</div>
+
 						</div>
 					</div>
 					<button formaction="./app/create.php" name="submit" id="btn-create" type="submit" class="btn btn-primary">Create</button>
